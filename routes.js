@@ -9,11 +9,13 @@ const controllers = fs.readdirSync(pathControllers);
 
 controllers.forEach((controller, index) => {
     const fileController = require(`${pathControllers}\\${controller}`)
-    router.get(`/get${index}`, fileController.get)
-    // console.log(fileController)
+    fileController.forEach(config => {
+        router[config.method](`/${config.url}`, config.function);
+    })
 })
-// const userController = require('./controllers/userController');
-// router.get('/', userController.get)
-
 
 module.exports = router;
+
+//  FALTA MIDDLEWARES, METODOS 
+
+// PEGAR METODO PELO NOME, PEGAR POR OBJETO, PEGAR USANDO CLASSE, PEGAR USANDO HOOKS
