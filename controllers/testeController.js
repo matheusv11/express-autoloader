@@ -1,9 +1,11 @@
+const jwt = require('../middlewares/jwt');
+
 module.exports = [
     {
 
         method: 'get',
         url: 'teste',
-        middlewares: ['jwt'],
+        middlewares: [jwt],
         function: async function get(req, res) {
             return res.status(200).send('Bem vindo ao teste');
         }
@@ -13,7 +15,7 @@ module.exports = [
 
         method: 'post',
         url: 'teste',
-        middlewares: ['jwt'],
+        middlewares: [],
         function: async function post(req, res) {
             return res.status(200).send('Post de teste');
         }
